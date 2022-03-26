@@ -3,8 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'northwind';
+  // tpyescript de veri türü : ile veriliyor
+  title: string = 'northwind';
+  user: string = 'semih acar';
+  // veri türü any herşey olabilir anlamına geliyor
+  
 }
