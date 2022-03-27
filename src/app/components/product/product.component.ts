@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ProductResponseModel } from 'src/app/models/productResponseModel';
-import {HttpClient} from '@angular/common/http';
+import { ProductService } from 'src/app/services/product.service';
+
 
 
 @Component({
@@ -12,10 +13,10 @@ import {HttpClient} from '@angular/common/http';
 export class ProductComponent implements OnInit {
 
   products:Product[] = [];
-  apiUrl = "https://localhost:7174/api/products/getall";
+  dataLoaded = false;
   
   // HttpClient türünde bir nesne istiyorum diyoruz
-  constructor(private httpClient:HttpClient) { }
+  constructor(private productService:ProductService) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -25,10 +26,12 @@ export class ProductComponent implements OnInit {
   getProducts(){
     // gelen data any oluyor 
     // gelen datayı productresponsemodele map edeceksin demiş oluyoruz
-    this.httpClient
-    .get<ProductResponseModel>(this.apiUrl)
-    .subscribe((response)=> {
-      this.products=response.data
+    // subscribe -- asenkron çalışıyor
+
+    this.productService.getProducts().subscribe(response=>{
+      this.products = response.data
+      this.dataLoaded = true;
     });
+    
   }
 }
