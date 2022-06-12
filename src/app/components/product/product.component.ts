@@ -33,4 +33,12 @@ export class ProductComponent implements OnInit {
     });
     
   }
+  getProductsByCategorys(id:number){
+
+    this.productService.getProductsByCategory(id).subscribe(response=>{
+      this.products = response.data
+      this.dataLoaded = true;
+    });
+    
+  }
 }
