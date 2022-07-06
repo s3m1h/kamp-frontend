@@ -18,6 +18,7 @@
         <th scope="col">UnitInStock</th>
         <th scope="col">KDVli fiyat</th>
         <th scope="col">Unit Price</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -28,7 +29,7 @@
             <td>{{product.unitInStock}}</td>
             <td>{{product.unitPrice | vatAdded:10 }}</td>
             <td>{{product.unitPrice | currency }}</td>
-            
+            <td><button (click)="addToCart(product)" class="btn btn-success btn-xs"> sepete ekle</button></td>
         </tr>
     </tbody>
   </table>

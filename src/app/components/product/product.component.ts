@@ -49,4 +49,7 @@ export class ProductComponent implements OnInit {
     });
     
   }
+  addToCart(product:Product){
+    console.log(product.productName)
+  }
 }
