@@ -14,7 +14,7 @@ export class ProductComponent implements OnInit {
 
   products:Product[] = [];
   dataLoaded = false;
-  
+  filterText="";  
   // HttpClient türünde bir nesne istiyorum diyoruz
   constructor(private productService:ProductService, private activatedRoute:ActivatedRoute) { }
 
