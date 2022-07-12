@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 
@@ -16,7 +17,11 @@ export class ProductComponent implements OnInit {
   dataLoaded = false;
   filterText="";  
   // HttpClient türünde bir nesne istiyorum diyoruz
-  constructor(private productService:ProductService, private activatedRoute:ActivatedRoute) { }
+  constructor(
+      private productService:ProductService,
+      private activatedRoute:ActivatedRoute,
+      private cartService:CartService
+     ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
@@ -51,5 +56,6 @@ export class ProductComponent implements OnInit {
   }
   addToCart(product:Product){
     console.log(product.productName)
+    this.cartService.addToCart(product);
   }
 }
